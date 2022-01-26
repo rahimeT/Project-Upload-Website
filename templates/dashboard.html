@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Kontrol Paneli</h3>
+<hr>
+<p>
+    Hoş Geldiniz, <p>{{request.user.username}}</p>
+</p>
+<hr>
+<a class ="btn btn-danger" href="/pdf/addPdf">ÖDEV YÜKLE</a>
+  <br><br><br><br><br><br>
+{% if pdfs  %}
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for pdf in pdfs  %}
+          <tr>
+        <th scope="row">{{pdf.id}}</th>
+        <td><a href="/pdf/pdf/{{pdf.id}}"> {{pdf.subject}}</a></td>  <!-- detail.html için link koyduk-->
+        <td>{{pdf.name}}</td>
+        <td>{{pdf.date}}</td>
+        
+
+        <td><a href="/pdf/update/{{pdf.id}}"  class ="btn btn-danger">Güncelle</a></td>
+        <td><a href="/pdf/delete/{{pdf.id}}" class ="btn btn-danger">Sil</a></td>
+
+      </tr>
+        {% endfor %}
+      
+    </tbody>
+  </table>
+{% else  %}
+<div class ="alert alert-danger">
+Herhangi bir ödeviniz bulunmamaktadır.
+
+</div>
+
+{% endif %}
+
+{% endblock body %}

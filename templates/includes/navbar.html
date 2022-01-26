@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">UZEM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link " href="{% url 'about' %}">HAKKIMIZDA</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Anasayfa</span></a>
+        </li>
+      
+
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+
+       {% if request.user.is_authenticated %} <!-- kullanıcı giriş yapmışsa linklere erişim sağlansın  -->
+       
+       <li class="nav-item active">
+          <a class="nav-link " href="{% url 'pdf:dashboard' %}">Kontrol Paneli</a>
+        </li>
+
+        <li class="nav-item active">
+        <a class="nav-link " href="{% url 'user:logout' %}">Çıkış Yap</a>
+       </li>
+       {% else %}
+         
+        <li class="nav-item active">
+          <a class="nav-link " href="{% url 'user:login' %}">Giriş Yap</a>
+        </li>
+
+       {% endif %}
+
+        <li class="nav-item active">
+          <a class="nav-link " href="{% url 'user:register' %}">Kayıt Ol</a>
+        </li>   
+   </ul>
+
+   
+       
+    </div>
+  </nav>
+</body>
+</html>

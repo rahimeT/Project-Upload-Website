@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+
+<div class="col-md-6 offset-md-3">
+ <h3>PDF EKLE</h3>
+ <hr />
+
+ <form method="post"  enctype="multipart/form-data">
+   {% csrf_token %} 
+   {{form.media}}
+   {{form|crispy}}
+   <br />
+ 
+ 
+   <hr>
+   <button type="submit" class="btn btn-danger">Ödevi yükle</button>
+ </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h3>Ödev Yükleme Sitesi</h3>
+    <p>Ödevlerinizi Pdf şeklinde yükleyiniz...</p>
+</div>
+
+<p>
+    {% if  request.user.is_authenticated %}
+      Giriş Yapılmış, {{request.user.username}}
+  {% else %}
+     Giriş Yapılmamış...<br>
+     LÜTFEN GİRİŞ YAPINIZ
+ {% endif %}
+
+</p>
+{% endblock body %}
